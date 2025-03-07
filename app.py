@@ -11,7 +11,7 @@ def load_model():
                                              torch_dtype=torch.float16, 
                                              use_safetensors=True, 
                                              variant="fp16")
-    device = "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     model.to(device)
     return model
 
